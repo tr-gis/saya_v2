@@ -1,0 +1,14 @@
+<launch>
+ 
+   <arg name="map"     default="$(find hdf_nav)/maps"/>
+  <node name="map_node" pkg="map_server" type="map_server" args="$(arg map)/map.yaml" respawn="false">
+    <param name="frame_id" value="/map" />
+  </node>
+
+  <arg name="scan_topic"  default="/scan" />
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <!--remap from="scan" to="scan_filtered"/-->
+    <rosparam file="$(find hdf_nav)/config/gmapping.yaml" command="load"/>
+    <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+</launch>

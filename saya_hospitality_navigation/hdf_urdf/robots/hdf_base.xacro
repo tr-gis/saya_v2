@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+
+<robot
+  name="hdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-6.96233809465329E-05 0.0443130681837233 -0.0129998861507509"
+        rpy="0 0 0" />
+      <mass
+        value="1.03787857073283" />
+      <inertia
+        ixx="0.0171116416661218"
+        ixy="4.17462889833949E-05"
+        ixz="1.79952346852936E-06"
+        iyy="0.0236017006289864"
+        iyz="-0.000578254189330961"
+        izz="0.0396550473313757" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://URDF_base/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://URDF_base/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+ 
+
+
+<!--Left wheel properties -->
+
+
+ </link>
+  <link
+    name="front_left_wheel_Link">
+    <inertial>
+      <origin
+        xyz="0.03 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.04143796466502" />
+      <inertia
+        ixx="0.00298111617385361"
+        ixy="1.29636262416794E-22"
+        ixz="-4.23318022092426E-21"
+        iyy="0.00180298947632631"
+        iyz="-1.0842021724855E-19"
+        izz="0.00180298947632631" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://URDF_base/meshes/front_left_wheel_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.06" radius="0.075" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.161237926367553 0.0820847998953802 -0.0315000000000299"
+      rpy="0.612886829863072 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_left_wheel_Link" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+
+ <transmission name="front_left_wheel_trans" type="SimpleTransmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="front_left_wheel_motor">
+         <mechanicalReduction>1</mechanicalReduction>
+	</actuator>
+      <joint name="front_left_wheel_joint">
+	  <hardwareInterface>VelocityJointInterface</hardwareInterface>
+	</joint>
+   </transmission>
+
+
+
+<!--Right wheel properties-->
+
+  <link
+    name="front_right_wheel_link">
+    <inertial>
+      <origin
+        xyz="-0.03 -6.93889390390723E-18 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.04143796466502" />
+      <inertia
+        ixx="0.00298111617385361"
+        ixy="2.08536598639547E-24"
+        ixz="8.470368425442E-22"
+        iyy="0.00180298947632631"
+        iyz="3.3881317890172E-21"
+        izz="0.00180298947632631" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://URDF_base/meshes/front_right_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+       <cylinder length="0.06" radius="0.075" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.16124 0.0820847998953801 -0.03149999999997"
+      rpy="-1.5644281473493 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_right_wheel_link" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  
+  <transmission name="front_right_wheel_trans" type="SimpleTransmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="front_right_wheel_motor">
+         <mechanicalReduction>1</mechanicalReduction>
+	</actuator>
+      <joint name="front_right_wheel_joint">
+	  <hardwareInterface>VelocityJointInterface</hardwareInterface>
+	</joint>
+   </transmission>
+
+
+
+
+<!--laser link-->
+
+
+  <link
+    name="laser_Link">
+    <inertial>
+      <origin
+        xyz="7.073660903377E-05 0.0316235280435242 -8.9889926402964E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.142186104854555" />
+      <inertia
+        ixx="8.00805631158865E-05"
+        ixy="-2.50611691787964E-07"
+        ixz="1.06075864789774E-07"
+        iyy="4.89630225093579E-05"
+        iyz="6.50241068735284E-08"
+        izz="7.98679584560671E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://URDF_base/meshes/laser_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://URDF_base/meshes/laser_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="0 -0.281767700465365 0.00149999999989141"
+      rpy="0 -1.22460635382238E-16 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="laser_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

@@ -1,0 +1,16 @@
+Steps for installation;
+
+Step1:
+----
+sudo apt-get install libusb-1.0-0-dev 
+git clone https://github.com/respeaker/mic_array_dfu.git
+cd mic_array_dfu
+make
+sudo ./dfu --download respeaker_mic_array_8ch_raw.bin
+
+Note:Refer the git link readme for additional details
+
+Step 2:
+-----
+git clone https://github.com/respeaker/mic_array
+

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+  <!-- This launch file launches the command line function for recording the position of motors while moving.  -->
+  <!-- the bag file name can be changed  -->
+<launch>
+
+<node pkg="rosbag" type="record" name="recoder" output="screen" args="-O speech_gesture /pan_controller_command /front_left_wheel_joint_command /front_right_wheel_joint_command /joint1_command /joint2_command  /joint3_command  /joint4_command /joint5_command  /joint6_command /joint7_command /joint8_command"/> 
+
+</launch>
+

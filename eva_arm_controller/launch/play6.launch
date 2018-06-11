@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+<node pkg="rosbag" type="play" name="player" output="screen" args="-r 2.5 --clock /home/asimov/era_ws/src/saya_hospitality-ros-pkg/saya_hospitality_manipulation/eva_arm_controller/bag/eva4.bag /joint1_command:=/joint1_controller/command /joint2_command:=/joint2_controller/command  /joint3_command:=/joint3_controller/command  /joint4_command:=/joint4_controller/command /joint5_command:=/joint5_controller/command  /joint6_command:=/joint6_controller/command /joint7_command:=/joint7_controller/command /joint8_command:=/joint8_controller/command"/>
+
+</launch>

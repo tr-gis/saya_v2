@@ -1,0 +1,21 @@
+<package>
+  <name>saya_communication</name>
+  <version>1.2.4</version>
+  <description>
+    This package provides all the modules for communication.
+  </description>
+  <maintainer email="gokul@asimovrobotics.com">Gokul</maintainer>
+  <license>BSD</license>
+
+  
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  
+  <run_depend>saya_text_speech</run_depend>
+  
+<export>
+   <metapackage />
+ </export>
+
+</package>

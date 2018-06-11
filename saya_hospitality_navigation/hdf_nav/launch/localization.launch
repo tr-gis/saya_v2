@@ -1,0 +1,14 @@
+<launch>
+  <arg name="map"     default="$(find hdf_nav)/maps"/>
+  <node name="map_node" pkg="map_server" type="map_server" args="$(arg map)/map.yaml" respawn="false">
+    <param name="frame_id" value="/map" />
+  </node>
+
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+      
+      <rosparam file="$(find hdf_nav)/config/amcl.yaml" command="load"/>
+      <param name="use_map_topic" value="true"/>
+  </node>
+</launch>
+
+

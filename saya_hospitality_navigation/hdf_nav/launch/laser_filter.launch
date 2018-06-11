@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  
+   
+
+   <include file="$(find hdf_nav)/launch/hokuyo.launch" />
+   
+    <include file="$(find laser_filters)/examples/range_filter_example.launch" />
+   
+   
+   
+   
+   
+</launch>
+
+
+
+

@@ -1,0 +1,66 @@
+Steps:
+-------------------------------------------------------
+1.roslaunch eva_arm_controller eva_arm_controller.launch
+This will launch all the actuators in the robot.
+
+2.roslaunch hdf_base hdf_base.launch 
+This will launch the differential drive controller and also loads the URDF in the param server.
+
+3.roslaunch turtlebot_teleop keyboard_teleop.launch 
+This will launch the teleoperation through keyboard node.
+
+w/x : increase/decrease only linear speed by 10%
+e/c : increase/decrease only angular speed by 10%
+space key, k : force stop
+anything else : stop smoothly
+
+Moving around keys:
+-------------------
+   u    i    o
+   j    k    l
+   m    ,    .
+
+
+4.roslaunch rplidar_ros view_rplidar.launch
+This will launch the rplidar node and also launches the RVIZ.
+
+
+5.roslaunch laser_filters range_filter_example.launch 
+This is a filter node to limit the range of the laser to required values.
+
+6. roslaunch hdf_nav localization.launch 
+This launches the localization with amcl node and also loads the map in the parameter server.
+
+7. roslaunch hdf_nav move_base.launch 
+This launches the move base planner node.
+
+
+These are the basic commands for bringingup the navigation functionality in the robot.
+
+Changing the home position:
+---------------------------
+1.Inorder to change the home position , choose a position in RVIZ map by selecting the 2D pose estimate tool and clicking in the map area accordingly. This will give the position values in the terminal where you launched the localization node.
+
+2.Copy the values and change it in the amcl.yaml file inside hdf_nav/config.
+
+initial_pose_x : -0.073182
+1nitial_pose_y : -0.069906
+initial_pose_a : -0.5
+
+
+Changing the map:
+-----------------
+1. First save the newly created map inside the maps directory inside hdf_nav/maps.
+
+2. Then open the localization.launch file and change the args to the corresponding map name.
+
+Creating a map:
+--------------- 
+1. Follow the gmappinmg tutorials in ROS wiki.
+
+Tuning the parameters of planner and amcl:
+------------------------------------------
+1. Follow the ROS wiki instructions
+
+2. For better understaqnding of the params, download the husky robot simulator with gazebo.Play with the params in the simulator and then tune in the real robot.
+

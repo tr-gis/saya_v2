@@ -1,0 +1,33 @@
+<package>
+  <name>saya_hospitality_navigation</name>
+  <version>1.2.4</version>
+  <description>
+    This package provides all the modules for navigation.
+  </description>
+  <maintainer email="gokul@asimovrobotics.com">Gokul</maintainer>
+  <license>BSD</license>
+
+  
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  
+  <run_depend>diff_drive_controller</run_depend>
+  <run_depend>hdf_base</run_depend>
+  
+  
+  <run_depend>hdf_model</run_depend>
+  <run_depend>hdf_nav</run_depend>
+  <run_depend>hdf_urdf</run_depend>
+   
+  <run_depend>turtlebot</run_depend>
+  <run_depend>navigation</run_depend>
+  <run_depend>ros_controllers</run_depend>
+  <run_depend>rplidar_ros</run_depend>
+  <run_depend>laser_filters</run_depend>
+
+<export>
+   <metapackage />
+ </export>
+
+</package>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+  <!-- This launch file launches the all the current position publisher node for all the joint motors in cool400arm -->
+
+<launch>
+   <node name="joint1_current_position_publisher" pkg="eva_arm_controller" type="joint1_current_position_publisher"/>
+   <node name="joint2_current_position_publisher" pkg="eva_arm_controller" type="joint2_current_position_publisher"/>
+   <node name="joint3_current_position_publisher" pkg="eva_arm_controller" type="joint3_current_position_publisher"/>
+   <node name="joint4_current_position_publisher" pkg="eva_arm_controller" type="joint4_current_position_publisher"/>
+   <node name="joint5_current_position_publisher" pkg="eva_arm_controller" type="joint5_current_position_publisher"/>
+   <node name="joint6_current_position_publisher" pkg="eva_arm_controller" type="joint6_current_position_publisher"/>
+   <node name="joint7_current_position_publisher" pkg="eva_arm_controller" type="joint7_current_position_publisher"/>
+   <node name="joint8_current_position_publisher" pkg="eva_arm_controller" type="joint8_current_position_publisher"/>
+   <node name="front_right_wheel_current_position_publisher" pkg="eva_arm_controller" type="front_right_wheel_current_position_publisher"/>
+   <node name="front_left_wheel_current_position_publisher" pkg="eva_arm_controller" type="front_left_wheel_current_position_publisher"/>
+   <node name="pan_controller_current_position_publisher" pkg="eva_arm_controller" type="pan_controller_current_position_publisher "/>
+     
+</launch>

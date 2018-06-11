@@ -1,0 +1,9 @@
+<launch>
+  <!-- start world -->
+  
+  
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_single_link" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model diffbot -z 0.5" respawn="false" output="screen" />
+
+</launch>
+

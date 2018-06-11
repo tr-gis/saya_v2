@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!-- Load robot description-->
+    <include file="$(find hdf_urdf)/launch/description_gazebo.launch"/>
+    
+    
+	<!-- hdfc harware driver -->
+    <node pkg="hdf_base" type="hdf_node" name="hdf_node" output="screen">
+     </node>
+
+    
+    <!-- Diff_drive_controller parameters --> 
+   <include file="$(find diff_drive_controller)/launch/diff_drive_common.launch"/> 
+	
+	
+    
+</launch>

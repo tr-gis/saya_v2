@@ -1,0 +1,88 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+    
+      
+  <!-- Start the Dynamixel motor manager to control all Saya Teleop Arm servos -->
+  <!-- Base motors and neck-->
+   <node name="dynamixel_manager_base" pkg="dynamixel_controllers" type="controller_manager.py" required="true" output="screen">
+        <rosparam>
+            namespace: dynamixel_controller_manager_base
+            serial_ports:
+                dxl_tty0:
+                    port_name: "/dev/ttyUSB0"
+                    baud_rate: 1000000
+                    min_motor_id: 1
+                    max_motor_id: 11
+                    update_rate: 10
+        </rosparam>
+    </node>
+    
+    <!--Left hand-->
+    <node name="dynamixel_manager_left" pkg="dynamixel_controllers" type="controller_manager.py" required="true" output="screen">
+        <rosparam>
+            namespace: dynamixel_controller_manager_left
+            serial_ports:
+                dxl_tty1:
+                    port_name: "/dev/ttyUSB2"
+                    baud_rate: 1000000
+                    min_motor_id: 7
+                    max_motor_id: 10
+                    update_rate: 10
+        </rosparam>
+    </node>
+    
+    <!--Right hand-->
+    <node name="dynamixel_manager_right" pkg="dynamixel_controllers" type="controller_manager.py" required="true" output="screen">
+        <rosparam>
+            namespace: dynamixel_controller_manager_right
+            serial_ports:
+                dxl_tty2:
+                    port_name: "/dev/ttyUSB1"
+                    baud_rate: 1000000
+                    min_motor_id: 3
+                    max_motor_id: 6
+                    update_rate: 10
+        </rosparam>
+    </node>
+
+    
+
+       <!-- Load joint controller configuration from YAML file to parameter server -->
+  <rosparam file="$(find eva_arm_controller)/config/eva_arm.yaml" command="load"/>  -->
+
+    <!-- Start all SmartArm joint controllers -->
+    <node name="controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dynamixel_controller_manager_base
+                --port dxl_tty0
+		front_left_wheel_joint
+		front_right_wheel_joint
+		pan_controller"
+		   output="screen"/>
+		   
+    <!-- Start all SmartArm joint controllers -->
+    <node name="controller_spawner1" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dynamixel_controller_manager_left
+                --port dxl_tty1
+		joint5_controller
+		joint6_controller
+		joint7_controller
+		joint8_controller"
+		   output="screen"/>
+		   
+	<!-- Start all SmartArm joint controllers -->
+    <node name="controller_spawner2" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dynamixel_controller_manager_right
+                --port dxl_tty2
+		joint1_controller
+		joint2_controller
+		joint3_controller
+		joint4_controller"
+		   output="screen"/>
+    
+   
+         
+  
+  
+</launch>
+

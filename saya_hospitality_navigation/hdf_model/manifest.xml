@@ -1,0 +1,6 @@
+<package>
+  <description brief="hdf_model">hdf_model</description>
+  <depend package="gazebo" />
+  <author>me</author>
+  <license>BSD</license>
+</package>

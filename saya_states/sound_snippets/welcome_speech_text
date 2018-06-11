@@ -1,0 +1,1 @@
+ rosservice call /saya_text_speech_server "text: Hello sir. Welcome to Hardtech 2018, the flagship hardware conclave conducted by Maker Village,Kochi. It is our great pleasure,and,honour to have you as our guest today. Hope you have a great time" 

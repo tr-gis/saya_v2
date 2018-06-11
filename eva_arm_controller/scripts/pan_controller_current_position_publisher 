@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+# Software License Agreement (BSD License)
+#
+# Copyright (c) 2016, Sayabot Systems Pvt. Ltd.
+#   All rights reserved.
+# 
+#   Redistribution and use in source and binary forms, with or without
+#   modification, are permitted provided that the following conditions
+#   are met:
+# 
+#    * Redistributions of source code must retain the above copyright
+#      notice, this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above
+#      copyright notice, this list of conditions and the following
+#      disclaimer in the documentation and/or other materials provided
+#      with the distribution.
+#    * Neither the name of the CU Boulder nor the names of its
+#      contributors may be used to endorse or promote products derived
+#      from this software without specific prior written permission.
+# 
+#   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+#   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+#   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+#   FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+#   COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+#   INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+#   BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+#   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+#   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+#   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+#   ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#   POSSIBILITY OF SUCH DAMAGE
+#
+
+# Author: Niranjan M J
+
+
+# This is a Joint1 current position publisher node of cool400arm. 
+# This is used for Record and Playback of cool400arm.
+# This code subcribes Joint1 Motor State Message from the Ros topic /joint1_controller/state.
+# Then it separates the current position data from the JointState message and publishes the same in the Ros topic /joint1_command
+
+import rospy
+from math import fabs
+from dynamixel_msgs.msg import JointState
+from std_msgs.msg import Float64
+import rosbag
+
+joint1_pub = rospy.Publisher('/pan_controller_command', Float64, queue_size = 10) 
+
+
+def callback1(data):
+	current_pos = Float64()
+	current_pos = data.current_pos # stores only the current_pos value from the JointState message 
+	var = data.motor_ids
+	joint1_pub.publish(current_pos) # publishes only current_pos value of joint1 motor to ROS topic /joint1_command
+	
+
+def recorder():
+	rospy.init_node('recorder', anonymous=True)
+	rospy.Subscriber("/pan_controller/state", JointState, callback1) # subscribes the joint1 motor's state message 
+	
+if __name__ == '__main__':
+	try:
+		recorder()
+		rospy.spin()
+	except rospy.ROSInterruptException:
+		pass
+		

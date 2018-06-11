@@ -1,0 +1,18 @@
+<launch>
+   <!-- Load controller config -->
+  <rosparam command="load" file="$(find diff_drive_controller)/config/diffbot_controllers.yaml" />
+  
+   <!-- Spawn controller -->
+  <node name="controller_spawner1"
+        pkg="controller_manager" type="spawner" output="screen"
+        args="joint_state_controller diffbot_controller --shutdown-timeout 1" />
+
+
+  
+  <node pkg="topic_tools" type="relay" name="cmd_vel_relay"
+        args="cmd_vel diffbot_controller/cmd_vel" />
+  
+ 
+
+  
+</launch>
